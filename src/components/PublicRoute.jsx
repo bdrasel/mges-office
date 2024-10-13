@@ -6,20 +6,14 @@ import { useRouter } from 'next/navigation'
 
 import useAuth from '../hooks/useAuth'
 
-export default function PrivateRoute({ children }) {
+export default function PublicRoute({ children }) {
   const isLoggedIn = useAuth()
   const router = useRouter()
 
-  // console.log('user login', isLoggedIn)
-
-  if (!isLoggedIn) {
-    router.push('/login')
-
-    return null
-  }
-
   if (isLoggedIn) {
     router.push('/home')
+
+    return null
   }
 
   return <>{children}</>

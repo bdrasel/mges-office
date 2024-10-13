@@ -1,5 +1,6 @@
 // Component Imports
 import Login from '@views/Login'
+import PublicRoute from '../../../components/PublicRoute'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'
@@ -10,10 +11,16 @@ export const metadata = {
 }
 
 const LoginPage = () => {
+  console.log('Hello')
+
   // Vars
   const mode = getServerMode()
 
-  return <Login mode={mode} />
+  return (
+    <PublicRoute>
+      <Login mode={mode} />
+    </PublicRoute>
+  )
 }
 
 export default LoginPage

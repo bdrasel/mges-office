@@ -108,6 +108,7 @@ const LoginV2 = ({ mode }) => {
       router.push('/home')
     }
   }, [router, data])
+  useEffect(() => {}, [])
 
   const characterIllustration = useImageVariant(
     mode,

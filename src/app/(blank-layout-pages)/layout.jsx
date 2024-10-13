@@ -1,6 +1,7 @@
 // Component Imports
 import Providers from '@components/Providers'
 import BlankLayout from '@layouts/BlankLayout'
+import PublicRoute from '../layout'
 
 // Util Imports
 import { getSystemMode } from '@core/utils/serverHelpers'
@@ -12,7 +13,7 @@ const Layout = ({ children }) => {
 
   return (
     <Providers direction={direction}>
-      <BlankLayout systemMode={systemMode}>{children}</BlankLayout>
+        <BlankLayout systemMode={systemMode}>{children}</BlankLayout>
     </Providers>
   )
 }

@@ -26,8 +26,8 @@ const Layout = ({ children }) => {
   const systemMode = getSystemMode()
 
   return (
-    <Providers direction={direction}>
-      <PrivateRoute>
+    <PrivateRoute>
+      <Providers direction={direction}>
         <LayoutWrapper
           systemMode={systemMode}
           verticalLayout={
@@ -45,13 +45,16 @@ const Layout = ({ children }) => {
             </HorizontalLayout>
           }
         />
-      </PrivateRoute>
-      <ScrollToTop className='mui-fixed'>
-        <Button variant='contained' className='is-10 bs-10 rounded-full p-0 min-is-0 flex items-center justify-center'>
-          <i className='tabler-arrow-up' />
-        </Button>
-      </ScrollToTop>
-    </Providers>
+        <ScrollToTop className='mui-fixed'>
+          <Button
+            variant='contained'
+            className='is-10 bs-10 rounded-full p-0 min-is-0 flex items-center justify-center'
+          >
+            <i className='tabler-arrow-up' />
+          </Button>
+        </ScrollToTop>
+      </Providers>
+    </PrivateRoute>
   )
 }
 
