@@ -3,6 +3,8 @@
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 import useLayoutInit from '@core/hooks/useLayoutInit'
+import PrivateRoute from '@/components/PrivateRoute'
+import useAuthCheck from '@/hooks/useAuthCheck'
 
 const LayoutWrapper = props => {
   // Props
@@ -13,11 +15,16 @@ const LayoutWrapper = props => {
 
   useLayoutInit(systemMode)
 
-  // Return the layout based on the layout context
-  return (
-    <div className='flex flex-col flex-auto' data-skin={settings.skin}>
-      {settings.layout === 'horizontal' ? horizontalLayout : verticalLayout}
-    </div>
+  const authChecked = useAuthCheck()
+
+  return !authChecked ? (
+    <div>Checking Authentication...</div>
+  ) : (
+    <PrivateRoute>
+      <div className='flex flex-col flex-auto' data-skin={settings.skin}>
+        {settings.layout === 'horizontal' ? horizontalLayout : verticalLayout}
+      </div>
+    </PrivateRoute>
   )
 }
 

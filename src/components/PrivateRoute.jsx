@@ -10,16 +10,10 @@ export default function PrivateRoute({ children }) {
   const isLoggedIn = useAuth()
   const router = useRouter()
 
-  // console.log('user login', isLoggedIn)
-
   if (!isLoggedIn) {
     router.push('/login')
 
     return null
-  }
-
-  if (isLoggedIn) {
-    router.push('/home')
   }
 
   return <>{children}</>
