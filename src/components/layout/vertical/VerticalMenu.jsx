@@ -6,8 +6,11 @@ import { useTheme } from '@mui/material/styles'
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
+import locale from "@configs/i18n"
+
+
 // Component Imports
-import { Menu, MenuItem } from '@menu/vertical-menu'
+import { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
@@ -26,7 +29,7 @@ const RenderExpandIcon = ({ open, transitionDuration }) => (
   </StyledVerticalNavExpandIcon>
 )
 
-const VerticalMenu = ({ scrollMenu }) => {
+const VerticalMenu = ({ getDictionary, scrollMenu }) => {
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
@@ -63,14 +66,73 @@ const VerticalMenu = ({ scrollMenu }) => {
         <MenuItem href='/home' icon={<i className='tabler-smart-home' />}>
           Home
         </MenuItem>
+
+
+        <SubMenu
+          label="test"
+          icon={<i className='tabler-smart-home' />}
+          
+        >
+          <MenuItem href={`/${locale}/support`}>test 1</MenuItem>
+          <MenuItem href={`/${locale}/support/category`}>test 2</MenuItem>
+        </SubMenu>
+
         <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
-          About
+          Job
         </MenuItem>
         <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
-          Test
+          Quata
         </MenuItem>
-        <MenuItem href='/test2' icon={<i className='tabler-info-circle' />}>
-          Test 2
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Letter
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          E-Work Permit
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Employee
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Recalibration
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Review
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Consolar Service
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Leagal Aid
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Flexi Visa
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Dependent Visa
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Airport Service
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Events
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Skill Upscale
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Residency
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Insurance
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+        DeadBody Transport
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Support
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Settings
         </MenuItem>
       </Menu>
       {/* <Menu
