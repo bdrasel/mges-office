@@ -1,6 +1,6 @@
 // Component Imports
 import Login from '@views/Login'
-import PublicRoute from '../../../components/PublicRoute'
+import PublicRoute from '@/components/PublicRoute'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'

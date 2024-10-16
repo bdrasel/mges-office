@@ -3,6 +3,9 @@
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -10,7 +13,9 @@ import locale from "@configs/i18n"
 
 
 // Component Imports
-import { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
+// Component Imports
+import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
+import CustomChip from '@core/components/mui/Chip'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
@@ -29,15 +34,20 @@ const RenderExpandIcon = ({ open, transitionDuration }) => (
   </StyledVerticalNavExpandIcon>
 )
 
-const VerticalMenu = ({ getDictionary, scrollMenu }) => {
+const VerticalMenu = ({ dictionary, scrollMenu }) => {
+
+  console.log('dictionary', dictionary)
+
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
   const { settings } = useSettings()
   const { isBreakpointReached } = useVerticalNav()
+  const params = useParams()
 
   // Vars
   const { transitionDuration } = verticalNavOptions
+  const { lang: locale, id } = params
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
   return (
@@ -63,18 +73,19 @@ const VerticalMenu = ({ getDictionary, scrollMenu }) => {
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
-        <MenuItem href='/home' icon={<i className='tabler-smart-home' />}>
+        <MenuItem href={`/${locale}/home`} icon={<i className='tabler-smart-home' />}>
           Home
         </MenuItem>
 
 
         <SubMenu
-          label="test"
+          label={dictionary['navigation'].dashboards}
           icon={<i className='tabler-smart-home' />}
-          
+          suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
-          <MenuItem href={`/${locale}/support`}>test 1</MenuItem>
-          <MenuItem href={`/${locale}/support/category`}>test 2</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
         </SubMenu>
 
         <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
