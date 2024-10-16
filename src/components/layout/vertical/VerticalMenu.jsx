@@ -1,16 +1,15 @@
 'use client'
 
-// MUI Imports
-import { useTheme } from '@mui/material/styles'
-
 // Next Imports
 import { useParams } from 'next/navigation'
+
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
-import locale from "@configs/i18n"
-
+import locale from '@configs/i18n'
 
 // Component Imports
 // Component Imports
@@ -35,8 +34,7 @@ const RenderExpandIcon = ({ open, transitionDuration }) => (
 )
 
 const VerticalMenu = ({ dictionary, scrollMenu }) => {
-
-  console.log('dictionary', dictionary)
+  console.log(dictionary)
 
   // Hooks
   const theme = useTheme()
@@ -77,76 +75,34 @@ const VerticalMenu = ({ dictionary, scrollMenu }) => {
           Dashboard
         </MenuItem>
 
-        <SubMenu
-          label="Job"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/job`}>Job List</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="Quota"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/quota`}>Quota List</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="Letter"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/letter/predemandletter`}>Pre Demand Letter</MenuItem>
-          <MenuItem href={`/${locale}/letter/demandletter`}>Demand Letter</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="E-Work Permit"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/ework`}>E-Work Permit List</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="Employee"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/employee`}>Employee List</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="Recalibration"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/recalibration`}>Recalibration List</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="Review"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/review`}>Review List</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="Consolar Service"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/consolarService/legalization`}>Legalization</MenuItem>
-          <MenuItem href={`/${locale}/consolarService/passportService`}>Passport Service</MenuItem>
-          <MenuItem href={`/${locale}/consolarService/certification`}>Certification</MenuItem>
-          <MenuItem href={`/${locale}/consolarService/travelPermit`}>Travel Permit</MenuItem>
-          <MenuItem href={`/${locale}/consolarService/appointmentBooking`}>Appointment Booking</MenuItem>
-        </SubMenu>
-        <SubMenu
-          label="Leagal Aid"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/legalAid/adr`}>Adr</MenuItem>
-          <MenuItem href={`/${locale}/legalAid/compensationClaim`}>Compensation Claim</MenuItem>
-        </SubMenu>
-        <MenuItem href={`/${locale}/flexiVisa`} icon={<i className='tabler-info-circle' />}>
+        <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
+          Job
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Quata
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Letter
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          E-Work Permit
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Employee
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Recalibration
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Review
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Consolar Service
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Leagal Aid
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
           Flexi Visa
         </MenuItem>
         <MenuItem href={`/${locale}/dependentVisa`} icon={<i className='tabler-info-circle' />}>
@@ -164,20 +120,16 @@ const VerticalMenu = ({ dictionary, scrollMenu }) => {
         <MenuItem href={`/${locale}/residency`} icon={<i className='tabler-info-circle' />}>
           Residency
         </MenuItem>
-        <SubMenu
-          label="Insurance"
-          icon={<i className='tabler-smart-home' />}
-          // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
-        >
-          <MenuItem href={`/${locale}/insurance/users`}>Insurance Users</MenuItem>
-          <MenuItem href={`/${locale}/insurance/list`}>Insurance List</MenuItem>
-        </SubMenu>
-        <MenuItem href={`/${locale}/deadbodyTransportation`} icon={<i className='tabler-info-circle' />}>
-        DeadBody Transport
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          Insurance
+        </MenuItem>
+        <MenuItem href='/test' icon={<i className='tabler-info-circle' />}>
+          DeadBody Transport
         </MenuItem>
         <SubMenu
-          label="Support"
+          label='Support'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/support/list`}>Support List</MenuItem>
