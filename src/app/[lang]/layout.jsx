@@ -18,11 +18,11 @@ const RootLayout = ({ children }) => {
   const direction = 'ltr'
 
   return (
-    <Provider store={store}>
-      <html id='__next' lang='en' dir={direction}>
+    <html id='__next' lang='en' dir={direction}>
+      <Provider store={store}>
         <body className='flex is-full min-bs-full flex-auto flex-col'>{children}</body>
-      </html>
-    </Provider>
+      </Provider>
+    </html>
   )
 }
 

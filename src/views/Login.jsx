@@ -1,7 +1,11 @@
 'use client'
 
-// React Imports
+// Next Imports
 import { useState, useEffect } from 'react'
+
+import { useParams } from 'next/navigation'
+
+// React Imports
 
 // Next Imports
 import { useRouter } from 'next/navigation'
@@ -71,6 +75,10 @@ const LoginV2 = ({ mode }) => {
   const [success, setSuccess] = useState(false)
   const [login, { data, isLoading, isSuccess, isError, error: resError }] = useLoginMutation()
 
+  const params = useParams()
+
+  const { lang: locale, id } = params
+
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
   const lightImg = '/images/pages/auth-mask-light.png'
@@ -105,7 +113,7 @@ const LoginV2 = ({ mode }) => {
     }
 
     if (data?.success) {
-      router.push('/home')
+      router.push(`/${locale}/home`)
     }
   }, [router, data])
   useEffect(() => {}, [])
@@ -183,7 +191,7 @@ const LoginV2 = ({ mode }) => {
               </Typography>
             </div>
             <Button fullWidth variant='contained' disabled={isLoading} type='submit'>
-              Login
+              {isLoading ? 'Loading...' : 'Login'}
             </Button>
 
             {data?.success === false && <Alert severity='error'>{error}</Alert>}

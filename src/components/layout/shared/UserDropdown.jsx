@@ -3,6 +3,8 @@
 // React Imports
 import { useRef, useState, useEffect } from 'react'
 
+import { useParams } from 'next/navigation'
+
 // Next Imports
 import { useRouter } from 'next/navigation'
 
@@ -43,6 +45,10 @@ const UserDropdown = () => {
 
   const [logout, { data, isLoading, isSuccess, isError, error: resError }] = useLogoutMutation()
 
+  const params = useParams()
+
+  const { lang: locale } = params
+
   const handleDropdownOpen = () => {
     !open ? setOpen(true) : setOpen(false)
   }
@@ -70,7 +76,7 @@ const UserDropdown = () => {
     logout(resData)
 
     // Redirect to login page
-    router.push('/login')
+    router.push(`/${locale}/login`)
   }
 
   useEffect(() => {
@@ -79,7 +85,7 @@ const UserDropdown = () => {
     }
 
     if (data?.success) {
-      router.push('/home')
+      router.push(`/${locale}/login`)
     }
   }, [router, data])
 

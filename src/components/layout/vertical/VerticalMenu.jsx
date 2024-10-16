@@ -33,9 +33,7 @@ const RenderExpandIcon = ({ open, transitionDuration }) => (
   </StyledVerticalNavExpandIcon>
 )
 
-const VerticalMenu = ({ dictionary, scrollMenu }) => {
-  console.log(dictionary)
-
+const VerticalMenu = ({ scrollMenu }) => {
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
