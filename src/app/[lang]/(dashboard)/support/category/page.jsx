@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h1>Test page!</h1>
+  return <h1>Support Category</h1>
 }
