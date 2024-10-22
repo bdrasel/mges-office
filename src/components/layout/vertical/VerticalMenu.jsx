@@ -35,7 +35,7 @@ const RenderExpandIcon = ({ open, transitionDuration }) => (
 )
 
 const VerticalMenu = ({ dictionary, scrollMenu }) => {
-  console.log('dictionary', dictionary)
+
 
   // Hooks
   const theme = useTheme()
