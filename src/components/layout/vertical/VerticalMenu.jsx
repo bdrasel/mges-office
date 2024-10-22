@@ -1,16 +1,16 @@
 'use client'
 
 // MUI Imports
+import { useParams } from 'next/navigation'
+
 import { useTheme } from '@mui/material/styles'
 
 // Next Imports
-import { useParams } from 'next/navigation'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
-import locale from "@configs/i18n"
-
+import locale from '@configs/i18n'
 
 // Component Imports
 // Component Imports
@@ -35,7 +35,6 @@ const RenderExpandIcon = ({ open, transitionDuration }) => (
 )
 
 const VerticalMenu = ({ dictionary, scrollMenu }) => {
-
   console.log('dictionary', dictionary)
 
   // Hooks
@@ -78,58 +77,66 @@ const VerticalMenu = ({ dictionary, scrollMenu }) => {
         </MenuItem>
 
         <SubMenu
-          label="Job"
+          label='Job'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/job`}>Job List</MenuItem>
         </SubMenu>
         <SubMenu
-          label="Quota"
+          label='Quota'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/quota`}>Quota List</MenuItem>
         </SubMenu>
         <SubMenu
-          label="Letter"
+          label='Letter'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/letter/predemandletter`}>Pre Demand Letter</MenuItem>
           <MenuItem href={`/${locale}/letter/demandletter`}>Demand Letter</MenuItem>
         </SubMenu>
         <SubMenu
-          label="E-Work Permit"
+          label='E-Work Permit'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/ework`}>E-Work Permit List</MenuItem>
         </SubMenu>
         <SubMenu
-          label="Employee"
+          label='Employee'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/employee`}>Employee List</MenuItem>
         </SubMenu>
         <SubMenu
-          label="Recalibration"
+          label='Recalibration'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/recalibration`}>Recalibration List</MenuItem>
         </SubMenu>
         <SubMenu
-          label="Review"
+          label='Review'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/review`}>Review List</MenuItem>
         </SubMenu>
         <SubMenu
-          label="Consolar Service"
+          label='Consolar Service'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/consolarService/legalization`}>Legalization</MenuItem>
@@ -139,8 +146,9 @@ const VerticalMenu = ({ dictionary, scrollMenu }) => {
           <MenuItem href={`/${locale}/consolarService/appointmentBooking`}>Appointment Booking</MenuItem>
         </SubMenu>
         <SubMenu
-          label="Leagal Aid"
+          label='Leagal Aid'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/legalAid/adr`}>Adr</MenuItem>
@@ -165,19 +173,21 @@ const VerticalMenu = ({ dictionary, scrollMenu }) => {
           Residency
         </MenuItem>
         <SubMenu
-          label="Insurance"
+          label='Insurance'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/insurance/users`}>Insurance Users</MenuItem>
           <MenuItem href={`/${locale}/insurance/list`}>Insurance List</MenuItem>
         </SubMenu>
         <MenuItem href={`/${locale}/deadbodyTransportation`} icon={<i className='tabler-info-circle' />}>
-        DeadBody Transport
+          DeadBody Transport
         </MenuItem>
         <SubMenu
-          label="Support"
+          label='Support'
           icon={<i className='tabler-smart-home' />}
+
           // suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/support/list`}>Support List</MenuItem>

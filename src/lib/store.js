@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import { apiSlice } from './features/apiSlice/apiSlice'
 import authReducer from './features/auth/authApiSlice'
+import jobReducer from './features/jobs/jobApi'
 
 export const store = configureStore({
   reducer: {

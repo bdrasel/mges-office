@@ -5,11 +5,14 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_API_URL,
     prepareHeaders: async (headers, { getState, endpoint }) => {
-      const token = getState()?.auth?.accessToken
+      // const token = getState()?.auth?.accessToken
+      const auth = JSON.parse(localStorage.getItem('auth'))
 
-      if (token) {
-        headers.set('Authorization', `Bearer ${token}`)
+      if (auth?.accessToken) {
+        headers.set('Authorization', `Bearer ${auth?.accessToken}`)
       }
+
+      console.log('token', auth?.accessToken)
 
       return headers
     }
