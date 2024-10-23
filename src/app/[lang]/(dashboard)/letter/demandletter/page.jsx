@@ -57,11 +57,11 @@ export default function Page() {
   }, [demandLetterList, page, perPage, searchTerm, sortField, sortOrder])
 
   useEffect(() => {
-    if (isSuccess && data) {
-      setDemandLetters(data?.results?.data)
+    if (isSuccess && data?.results?.data) {
+      setDemandLetters(data.results.data);
     }
-  }, [isSuccess, data])
-
+  }, [isSuccess, data]);
+  
   const handlePageChange = (event, value) => {
     setPage(value)
   }
