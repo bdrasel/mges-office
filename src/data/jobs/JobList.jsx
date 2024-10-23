@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -28,24 +28,24 @@ import {
 
 import { Visibility, Edit, Delete, Search } from '@mui/icons-material'
 
-import { useDemandLetterListMutation } from '../../../../../lib/features/demandLetter/demandLetterApi'
+import { useJobListMutation } from '../../lib/features/jobs/jobApi'
 
-export default function Page() {
-  const [demandLetters, setDemandLetters] = useState([])
+export default function JobList() {
+  const [jobs, setJobs] = useState([])
   const [page, setPage] = useState(1)
   const [perPage, setPerPage] = useState(10)
   const [searchTerm, setSearchTerm] = useState('')
   const [sortOrder, setSortOrder] = useState('asc')
   const [sortField, setSortField] = useState('title')
 
-  const [demandLetterList, { data, isLoading, isSuccess, isError, error }] = useDemandLetterListMutation()
+  const [jobList, { data, isLoading, isSuccess, isError, error }] = useJobListMutation()
   const params = useParams()
   const { lang: locale } = params
 
   useEffect(() => {
-    const requestData = {
-      resource: 'DemandLetter',
-      action: 'ListDemandLetter',
+    const resData = {
+      resource: 'Job',
+      action: 'ListJob',
       search: searchTerm,
       per_page: perPage,
       page: page,
@@ -53,12 +53,12 @@ export default function Page() {
       sort_order: sortOrder
     }
 
-    demandLetterList(requestData)
-  }, [demandLetterList, page, perPage, searchTerm, sortField, sortOrder])
+    jobList(resData)
+  }, [jobList, page, perPage, searchTerm, sortField, sortOrder])
 
   useEffect(() => {
     if (isSuccess && data) {
-      setDemandLetters(data?.results?.data)
+      setJobs(data?.results?.data)
     }
   }, [isSuccess, data])
 
@@ -76,19 +76,19 @@ export default function Page() {
   return (
     <div>
       <Head>
-        <title>Demand Letters</title>
-        <meta property='og:title' content='Demand Letters' />
+        <title>Job List Page</title>
+        <meta property='og:title' content='Job List Page' />
       </Head>
 
       <Box my={4} mx={2}>
         <Typography variant='h4' gutterBottom align='center' color='primary'>
-          Available Demand Letters
+          Available Job Listings
         </Typography>
 
         {/* Enhanced Search Bar */}
         <Box mb={3} display='flex' justifyContent='center'>
           <TextField
-            label='Search Demand Letters'
+            label='Search Jobs'
             variant='outlined'
             fullWidth
             value={searchTerm}
@@ -111,16 +111,16 @@ export default function Page() {
           </Box>
         )}
 
-        {isError && <Alert severity='error'>{error?.message || 'Error loading demand letters'}</Alert>}
+        {isError && <Alert severity='error'>{error?.message || 'Error loading jobs'}</Alert>}
 
-        {isSuccess && demandLetters?.length === 0 && (
+        {isSuccess && jobs.length === 0 && (
           <Typography align='center' variant='h6'>
-            No demand letters found.
+            No jobs found.
           </Typography>
         )}
 
-        {/* Demand Letter Table */}
-        {isSuccess && demandLetters.length > 0 && (
+        {/* Job Table */}
+        {isSuccess && jobs.length > 0 && (
           <TableContainer component={Paper} sx={{ borderRadius: 3, boxShadow: 3 }}>
             <Table>
               <TableHead sx={{ backgroundColor: '#1976d2' }}>
@@ -140,25 +140,58 @@ export default function Page() {
                   </TableCell>
                   <TableCell>
                     <TableSortLabel
-                      active={sortField === 'date_issued'}
+                      active={sortField === 'location'}
                       direction={sortOrder}
-                      onClick={() => handleSort('date_issued')}
+                      onClick={() => handleSort('location')}
                       sx={{ color: 'white' }}
                     >
-                      Date Issued
+                      Location
+                    </TableSortLabel>
+                  </TableCell>
+                  <TableCell>
+                    <TableSortLabel
+                      active={sortField === 'level'}
+                      direction={sortOrder}
+                      onClick={() => handleSort('level')}
+                      sx={{ color: 'white' }}
+                    >
+                      Level
+                    </TableSortLabel>
+                  </TableCell>
+                  <TableCell>
+                    <TableSortLabel
+                      active={sortField === 'employement_type'}
+                      direction={sortOrder}
+                      onClick={() => handleSort('employement_type')}
+                      sx={{ color: 'white' }}
+                    >
+                      Employment Type
+                    </TableSortLabel>
+                  </TableCell>
+                  <TableCell>
+                    <TableSortLabel
+                      active={sortField === 'offered_salary'}
+                      direction={sortOrder}
+                      onClick={() => handleSort('offered_salary')}
+                      sx={{ color: 'white' }}
+                    >
+                      Salary
                     </TableSortLabel>
                   </TableCell>
                   <TableCell align='center'>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {demandLetters.map((letter, index) => (
+                {jobs.map((job, index) => (
                   <TableRow key={index} hover sx={{ '&:hover': { backgroundColor: '#f5f5f5' } }}>
                     <TableCell>{(page - 1) * perPage + index + 1}</TableCell> {/* Serial Number */}
-                    <TableCell>{letter.title}</TableCell>
-                    <TableCell>{letter.date_issued}</TableCell>
+                    <TableCell>{job.title}</TableCell>
+                    <TableCell>{job.location}</TableCell>
+                    <TableCell>{job.level}</TableCell>
+                    <TableCell>{job.employement_type}</TableCell>
+                    <TableCell>{job.offered_salary || 'Not specified'}</TableCell>
                     <TableCell align='center'>
-                      <Link href={`/${locale}/demand-letter/${letter.id}`} passHref>
+                      <Link href={`/${locale}/job/${job.id}`} passHref>
                         <IconButton color='primary'>
                           <Visibility />
                         </IconButton>
@@ -178,7 +211,7 @@ export default function Page() {
         )}
 
         {/* Pagination */}
-        {isSuccess && demandLetters.length > 0 && (
+        {isSuccess && jobs.length > 0 && (
           <Box mt={4} display='flex' justifyContent='center'>
             <Pagination
               count={Math.ceil(data?.results?.total / perPage)}
